@@ -98,6 +98,48 @@ src/
   active navigation states, back-to-top control, smooth anchor scrolling, and a
   friendly 404 and error boundary.
 
+## Deployment (GitHub Pages + qhealthglobal.com)
+
+The site is built and deployed by `.github/workflows/deploy.yml` on every push
+to `main` (or manually via **Actions → Deploy Website → Run workflow**).
+
+### One-time repository setup
+
+1. **Settings → Pages → Build and deployment → Source: GitHub Actions.**
+2. Set **Custom domain** to `qhealthglobal.com` and save.
+3. Once the certificate is issued, enable **Enforce HTTPS**.
+
+The first workflow run only deploys successfully after step 1–2 are done; use
+**Re-run all jobs** if the initial run fails.
+
+### DNS records
+
+| Type | Name | Value |
+| --- | --- | --- |
+| A | `@` | `185.199.108.153` |
+| A | `@` | `185.199.109.153` |
+| A | `@` | `185.199.110.153` |
+| A | `@` | `185.199.111.153` |
+| CNAME | `www` | `q-health-global.github.io` |
+
+Optional IPv6 AAAA records for the apex:
+`2606:50c0:8000::153`, `2606:50c0:8001::153`,
+`2606:50c0:8002::153`, `2606:50c0:8003::153`.
+
+DNS propagation can take up to 24 hours; GitHub issues the HTTPS certificate
+after it resolves.
+
+### How the deployment is wired
+
+- `base: "/"` in `vite.config.ts` — the custom domain serves the site from its root.
+- `public/CNAME` contains `qhealthglobal.com`, so the custom domain travels with
+  every artifact.
+- `scripts/postbuild.mjs` (run automatically by `npm run build`) copies
+  `dist/index.html` to `dist/404.html`. GitHub Pages serves that file for deep
+  links such as `/about`, letting the SPA boot and render the right route.
+- The workflow publishes `dist/` with `actions/upload-pages-artifact` and
+  `actions/deploy-pages`.
+
 ## Notes
 
 - The contact form composes an email to `contact@qhealthglobal.com` and hands it
