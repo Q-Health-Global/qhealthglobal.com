@@ -21,7 +21,7 @@ npm run lint     # eslint
 | Route | Page | Notes |
 | --- | --- | --- |
 | `/` | Home | Exact reproduction of the reference design |
-| `/about` | About | Mission, values, approach, company facts, milestones |
+| `/about` | About | Who we are, integrated capabilities, four focus areas, human-centred care, recognition & partners, vision |
 | `/solutions` | Our Solutions | Hospital operations, precision oncology, capabilities, engagement model |
 | `/technology` | Technology | The decision stack, enterprise controls, responsible AI |
 | `/impact` | Impact | Outcome metrics, impact pillars, engagement snapshots, evaluation method |

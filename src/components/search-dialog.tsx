@@ -20,7 +20,7 @@ const searchIndex: SearchEntry[] = [
   },
   {
     title: "About Q-Health",
-    description: "Our mission, values, approach and company details.",
+    description: "Who we are, our approach, focus areas, recognition and vision.",
     to: "/about",
     group: "Page",
   },
@@ -83,6 +83,18 @@ const searchIndex: SearchEntry[] = [
     description: "Baselines, comparators and independent review.",
     to: "/impact",
     group: "Topic",
+  },
+  {
+    title: "Recognition & partners",
+    description: "RIKEN JHPC-Quantum Test User Program and our healthcare partner network.",
+    to: "/about#recognition",
+    group: "About",
+  },
+  {
+    title: "Our vision",
+    description: "Better decisions. Better care. Better lives.",
+    to: "/about#vision",
+    group: "About",
   },
   {
     title: "Privacy policy",
